@@ -1,7 +1,7 @@
-# Podflare skill for OpenClaw
+# Code sandbox by Podflare — skill for OpenClaw
 
-Run LLM-generated code in a hardware-isolated Firecracker microVM
-instead of on your laptop.
+Run LLM-generated code in a hardware-isolated Podflare Pod (a
+dedicated Linux microVM) instead of on your laptop.
 
 This is the OpenClaw / ClawHub [skill package][clawhub] for
 [Podflare][pf] — a managed cloud sandbox built for AI agents.
@@ -108,11 +108,11 @@ should show `podflare` as active.
 
 ## Security
 
-Every sandbox is a fresh Firecracker microVM with KVM-backed
-hardware isolation — the same hypervisor AWS Lambda runs on.
-The sandbox has no access to your local filesystem, env vars,
-loaded SSH keys, cloud CLI credentials, or browser profile. A
-compromised package, a prompt-injected README, or a misbehaving
+Every sandbox is a fresh Podflare Pod — a dedicated microVM with
+KVM-backed hardware isolation, its own Linux kernel, and its own
+page tables. The Pod has no access to your local filesystem, env
+vars, loaded SSH keys, cloud CLI credentials, or browser profile.
+A compromised package, a prompt-injected README, or a misbehaving
 agent cannot pivot into your environment.
 
 See
