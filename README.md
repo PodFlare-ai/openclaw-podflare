@@ -41,10 +41,10 @@ openclaw skills install ./openclaw-podflare
 
 ## Configure
 
-Mint a free API key at
+**Step 1 — API key.** Mint a free API key at
 [dashboard.podflare.ai/keys](https://dashboard.podflare.ai/keys)
-($200 starter credit, no card, 60 seconds). Then export it so
-the skill can pick it up:
+($200 starter credit, no card, 60 seconds). Export it so the
+skill can pick it up:
 
 ```bash
 export PODFLARE_API_KEY=pf_live_...
@@ -52,6 +52,32 @@ export PODFLARE_API_KEY=pf_live_...
 
 The skill declares `PODFLARE_API_KEY` as its `primaryEnv`, so
 OpenClaw will prompt for it on first run if you haven't set it.
+
+**Step 2 — MCP endpoint (one-time, recommended).** So the agent
+sees Podflare tools as first-class MCP calls rather than going
+through `curl`, add this block to your Claude Code settings at
+`~/.claude/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "podflare": {
+      "url": "https://mcp.podflare.ai",
+      "headers": {
+        "Authorization": "Bearer ${PODFLARE_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+Restart the OpenClaw session. The agent now has
+`mcp__podflare__run_python`, `mcp__podflare__create_sandbox`,
+`mcp__podflare__fork`, etc. alongside the default tools.
+
+If you skip step 2, the skill still works — it falls back to
+calling the same MCP endpoint via `curl` from the default Bash
+tool. The SKILL.md includes the fallback request shape.
 
 ## Verify
 
