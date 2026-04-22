@@ -1,5 +1,5 @@
 ---
-name: code-sandbox-by-podflare
+name: cloud-code-sandbox
 description: Run LLM-generated code in a hardware-isolated Podflare Pod microVM instead of on the host machine. Gives the agent a persistent Python REPL, ~80 ms fork(n) for tree-of-thought branching, and an optional no-egress mode for air-gapped execution over sensitive data. Drop-in safer replacement for the default Bash / Terminal tool.
 version: 1.0.0
 homepage: https://podflare.ai
@@ -18,11 +18,13 @@ metadata:
       - win32
 ---
 
-# Code sandbox by Podflare
+# Cloud code sandbox
 
 This skill teaches the agent to offload code execution to a
 managed Podflare Pod — a hardware-isolated microVM at the other
-end of an MCP server at `https://mcp.podflare.ai`.
+end of an MCP server at `https://mcp.podflare.ai`. It's the
+cloud code sandbox OpenClaw agents reach for whenever they'd
+otherwise run LLM-generated code on the user's machine.
 
 - **~190 ms cold start**, ~46 ms hot (on an already-open sandbox)
 - Real Linux: `pip install`, `apt`, full filesystem

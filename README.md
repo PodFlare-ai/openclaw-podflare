@@ -1,7 +1,7 @@
-# Code sandbox by Podflare — skill for OpenClaw
+# Cloud code sandbox — Podflare skill for OpenClaw
 
 Run LLM-generated code in a hardware-isolated Podflare Pod (a
-dedicated Linux microVM) instead of on your laptop.
+dedicated cloud microVM) instead of on your laptop.
 
 This is the OpenClaw / ClawHub [skill package][clawhub] for
 [Podflare][pf] — a managed cloud sandbox built for AI agents.
